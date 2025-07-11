@@ -1,5 +1,4 @@
 // pages/index.js
-
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 
@@ -129,13 +128,13 @@ export default function Home() {
 
         .container {
           min-height: 100vh;
-          background: #0a0a0a;
+          background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
           color: white;
           position: relative;
           overflow: hidden;
         }
 
-        /* Animated background */
+        /* Animated gradient mesh */
         .bg-gradient {
           position: absolute;
           width: 200%;
@@ -144,26 +143,89 @@ export default function Home() {
           left: -50%;
           background: conic-gradient(from 0deg at 50% 50%, #6366f1, #8b5cf6, #ec4899, #06b6d4, #6366f1);
           animation: rotate 20s linear infinite;
-          opacity: 0.03;
+          opacity: 0.05;
         }
 
         @keyframes rotate {
           to { transform: rotate(360deg); }
         }
 
+        /* Animated particles */
+        .particles {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+        }
+
+        .particle {
+          position: absolute;
+          width: 4px;
+          height: 4px;
+          background: white;
+          border-radius: 50%;
+          opacity: 0;
+          animation: particle-float 10s infinite linear;
+        }
+
+        @keyframes particle-float {
+          0% {
+            opacity: 0;
+            transform: translateY(100vh) scale(0);
+          }
+          10% {
+            opacity: 0.4;
+          }
+          90% {
+            opacity: 0.4;
+          }
+          100% {
+            opacity: 0;
+            transform: translateY(-100vh) scale(1);
+          }
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 8s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 1s; animation-duration: 10s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 2s; animation-duration: 9s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 0.5s; animation-duration: 11s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 3s; animation-duration: 8s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 1.5s; animation-duration: 10s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 2.5s; animation-duration: 9s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 0.8s; animation-duration: 11s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 3.5s; animation-duration: 8s; }
+        .particle:nth-child(10) { left: 15%; animation-delay: 4s; animation-duration: 10s; }
+
+        /* Animated grid */
+        .grid-bg {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-image: 
+            linear-gradient(rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+          background-size: 50px 50px;
+          animation: grid-move 10s linear infinite;
+        }
+
+        @keyframes grid-move {
+          0% { transform: translate(0, 0); }
+          100% { transform: translate(50px, 50px); }
+        }
+
         /* Floating orbs */
         .orb {
           position: absolute;
           border-radius: 50%;
-          filter: blur(80px);
+          filter: blur(60px);
           animation: float 20s infinite ease-in-out;
-          opacity: 0.5;
+          opacity: 0.3;
         }
 
         .orb1 {
           width: 300px;
           height: 300px;
-          background: #6366f1;
+          background: radial-gradient(circle, #6366f1 0%, transparent 70%);
           top: -150px;
           right: -100px;
           animation-delay: 0s;
@@ -172,7 +234,7 @@ export default function Home() {
         .orb2 {
           width: 400px;
           height: 400px;
-          background: #8b5cf6;
+          background: radial-gradient(circle, #8b5cf6 0%, transparent 70%);
           bottom: -200px;
           left: -150px;
           animation-delay: 5s;
@@ -181,10 +243,27 @@ export default function Home() {
         .orb3 {
           width: 250px;
           height: 250px;
-          background: #06b6d4;
+          background: radial-gradient(circle, #06b6d4 0%, transparent 70%);
           top: 50%;
           left: 50%;
           animation-delay: 10s;
+        }
+
+        /* Wave animation */
+        .wave {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 100px;
+          background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%236366f1' opacity='0.1'/%3E%3C/svg%3E");
+          background-size: 1200px 100px;
+          animation: wave-move 10s linear infinite;
+        }
+
+        @keyframes wave-move {
+          0% { background-position-x: 0; }
+          100% { background-position-x: 1200px; }
         }
 
         @keyframes float {
@@ -218,17 +297,45 @@ export default function Home() {
           align-items: center;
           justify-content: center;
           margin-bottom: 40px;
-          animation: pulse 2s infinite;
+          animation: logo-float 3s ease-in-out infinite;
           box-shadow: 0 20px 40px rgba(99, 102, 241, 0.4);
+          position: relative;
+          overflow: hidden;
         }
 
-        @keyframes pulse {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.05); }
+        .logo::before {
+          content: '';
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+          transform: rotate(45deg);
+          animation: logo-shine 3s infinite;
         }
 
-        .logo-icon {
-          font-size: 50px;
+        @keyframes logo-float {
+          0%, 100% { 
+            transform: translateY(0) scale(1);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.4);
+          }
+          50% { 
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 30px 60px rgba(99, 102, 241, 0.6);
+          }
+        }
+
+        @keyframes logo-shine {
+          0% { transform: translateX(-200%) translateY(-200%) rotate(45deg); }
+          100% { transform: translateX(200%) translateY(200%) rotate(45deg); }
+        }
+
+        .logo svg {
+          width: 60px;
+          height: 60px;
+          z-index: 1;
+          position: relative;
         }
 
         /* Badge */
@@ -236,14 +343,15 @@ export default function Home() {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          background: rgba(99, 102, 241, 0.15);
-          border: 1px solid rgba(99, 102, 241, 0.4);
+          background: rgba(99, 102, 241, 0.2);
+          border: 1px solid rgba(99, 102, 241, 0.5);
           padding: 8px 20px;
           border-radius: 50px;
           font-size: 14px;
           margin-bottom: 30px;
           animation: fadeInUp 0.6s ease-out;
           color: #e0e7ff;
+          backdrop-filter: blur(10px);
         }
 
         .live-dot {
@@ -315,10 +423,11 @@ export default function Home() {
           font-size: 16px;
           border: 2px solid rgba(255, 255, 255, 0.2);
           border-radius: 12px;
-          background: rgba(255, 255, 255, 0.08);
+          background: rgba(255, 255, 255, 0.1);
           color: white;
           outline: none;
           transition: all 0.3s;
+          backdrop-filter: blur(10px);
         }
 
         .input::placeholder {
@@ -327,8 +436,8 @@ export default function Home() {
 
         .input:focus {
           border-color: #6366f1;
-          background: rgba(255, 255, 255, 0.12);
-          box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+          background: rgba(255, 255, 255, 0.15);
+          box-shadow: 0 0 30px rgba(99, 102, 241, 0.4);
         }
 
         .button {
@@ -342,23 +451,42 @@ export default function Home() {
           cursor: pointer;
           transition: all 0.3s;
           white-space: nowrap;
-          box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+          box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+          position: relative;
+          overflow: hidden;
+        }
+
+        .button::before {
+          content: '';
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+          transform: rotate(45deg) translateX(-100%);
+          transition: transform 0.6s;
         }
 
         .button:hover {
           transform: translateY(-2px);
-          box-shadow: 0 20px 40px rgba(99, 102, 241, 0.4);
+          box-shadow: 0 20px 40px rgba(99, 102, 241, 0.5);
           filter: brightness(1.1);
+        }
+
+        .button:hover::before {
+          transform: rotate(45deg) translateX(100%);
         }
 
         /* Success message */
         .success {
-          background: rgba(16, 185, 129, 0.15);
-          border: 2px solid rgba(16, 185, 129, 0.4);
+          background: rgba(16, 185, 129, 0.2);
+          border: 2px solid rgba(16, 185, 129, 0.5);
           padding: 20px;
           border-radius: 12px;
           animation: fadeInUp 0.6s ease-out;
           color: #a7f3d0;
+          backdrop-filter: blur(10px);
         }
 
         .success h3 {
@@ -387,18 +515,19 @@ export default function Home() {
         }
 
         .countdown-item {
-          background: rgba(255, 255, 255, 0.08);
-          border: 1px solid rgba(255, 255, 255, 0.15);
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
           padding: 20px;
           border-radius: 16px;
-          backdrop-filter: blur(10px);
+          backdrop-filter: blur(20px);
           transition: all 0.3s;
         }
 
         .countdown-item:hover {
           transform: translateY(-3px);
-          border-color: rgba(99, 102, 241, 0.4);
-          box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+          border-color: rgba(99, 102, 241, 0.5);
+          box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+          background: rgba(99, 102, 241, 0.15);
         }
 
         .countdown-value {
@@ -427,19 +556,19 @@ export default function Home() {
         }
 
         .feature {
-          background: rgba(255, 255, 255, 0.06);
-          border: 1px solid rgba(255, 255, 255, 0.12);
+          background: rgba(255, 255, 255, 0.08);
+          border: 1px solid rgba(255, 255, 255, 0.15);
           padding: 30px;
           border-radius: 20px;
-          backdrop-filter: blur(10px);
+          backdrop-filter: blur(20px);
           transition: all 0.3s;
         }
 
         .feature:hover {
           transform: translateY(-5px);
-          border-color: rgba(99, 102, 241, 0.4);
-          background: rgba(99, 102, 241, 0.08);
-          box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+          border-color: rgba(99, 102, 241, 0.5);
+          background: rgba(99, 102, 241, 0.1);
+          box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
         }
 
         .feature-icon {
@@ -497,13 +626,51 @@ export default function Home() {
 
       <div className="container">
         <div className="bg-gradient"></div>
+        <div className="grid-bg"></div>
+        <div className="particles">
+          <span className="particle"></span>
+          <span className="particle"></span>
+          <span className="particle"></span>
+          <span className="particle"></span>
+          <span className="particle"></span>
+          <span className="particle"></span>
+          <span className="particle"></span>
+          <span className="particle"></span>
+          <span className="particle"></span>
+          <span className="particle"></span>
+        </div>
         <div className="orb orb1"></div>
         <div className="orb orb2"></div>
         <div className="orb orb3"></div>
+        <div className="wave"></div>
 
         <main className="content">
           <div className="logo">
-            <span className="logo-icon">✨</span>
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              {/* Paper plane icon with sparkles */}
+              <path d="M20 40 L50 25 L80 40 L50 55 Z" fill="white" opacity="0.9"/>
+              <path d="M20 40 L50 55 L50 75 L20 40 Z" fill="white" opacity="0.7"/>
+              <path d="M80 40 L50 55 L50 75 L80 40 Z" fill="white" opacity="0.8"/>
+              
+              {/* Sparkles around the plane */}
+              <circle cx="25" cy="30" r="2" fill="white" opacity="0.8">
+                <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="75" cy="30" r="2" fill="white" opacity="0.6">
+                <animate attributeName="opacity" values="0.6;0.1;0.6" dur="2.5s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="35" cy="65" r="1.5" fill="white" opacity="0.7">
+                <animate attributeName="opacity" values="0.7;0.2;0.7" dur="1.8s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="65" cy="65" r="1.5" fill="white" opacity="0.9">
+                <animate attributeName="opacity" values="0.9;0.3;0.9" dur="2.2s" repeatCount="indefinite"/>
+              </circle>
+              
+              {/* AI dots */}
+              <circle cx="50" cy="40" r="3" fill="white">
+                <animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite"/>
+              </circle>
+            </svg>
           </div>
 
           <div className="badge">
