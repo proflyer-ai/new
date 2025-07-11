@@ -135,7 +135,7 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        access_key: 'YOUR_ACCESS_KEY', // Same key works!
+        access_key: '11477007-878c-460e-acba-106261803f80', // Same key works!
         to_email: email, // Send to the user
         subject: 'Welcome to ProFlyer.ai! 🚀 Your Early Access is Confirmed',
         from_name: 'ProFlyer.ai Team',
