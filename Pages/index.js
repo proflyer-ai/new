@@ -7,12 +7,16 @@ export default function Home() {
       alignItems: 'center',
       justifyContent: 'center',
       color: 'white',
-      textAlign: 'center',
       fontFamily: 'system-ui'
     }}>
-      <div>
-        <h1 style={{ fontSize: '4rem' }}>ProFlyer.ai</h1>
-        <p style={{ fontSize: '1.5rem' }}>Coming Soon - AI Design Assistant</p>
+      <div style={{ textAlign: 'center', padding: '20px' }}>
+        <h1 style={{ fontSize: '3rem', marginBottom: '20px' }}>
+          ProFlyer.ai
+        </h1>
+        <p style={{ fontSize: '1.5rem', marginBottom: '40px' }}>
+          Your AI Design Assistant - Coming Soon!
+        </p>
+        <p>🚀 Launching in 30 days</p>
       </div>
     </div>
   )
