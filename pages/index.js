@@ -1,4 +1,5 @@
 // pages/index.js
+
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 
