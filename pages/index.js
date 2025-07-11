@@ -270,12 +270,29 @@ export default function Home() {
         }
 
         /* Headings */
-        h1 {
-          font-size: clamp(2.5rem, 7vw, 4.5rem);
-          font-weight: 800;
-          margin-bottom: 20px;
-          line-height: 1.1;
+        h1.brand-title {
+          font-size: clamp(3rem, 10vw, 6rem);
+          font-weight: 900;
+          margin-bottom: 10px;
+          line-height: 1;
+          letter-spacing: -2px;
+          display: flex;
+          align-items: baseline;
+          justify-content: center;
+          gap: 0;
+        }
+
+        .brand-name {
           color: #ffffff;
+          text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        h2.tagline {
+          font-size: clamp(1.2rem, 3vw, 1.8rem);
+          font-weight: 400;
+          margin-bottom: 20px;
+          color: #cbd5e1;
+          letter-spacing: 0.5px;
         }
 
         .gradient-text {
@@ -284,6 +301,7 @@ export default function Home() {
           -webkit-text-fill-color: transparent;
           background-clip: text;
           display: inline-block;
+          font-weight: 900;
         }
 
         .subtitle {
@@ -500,11 +518,12 @@ export default function Home() {
             <span>{emailCount} designers already joined the waitlist</span>
           </div>
 
-          <h1>
-            Design Like a Pro with
-            <br />
-            <span className="gradient-text">AI Superpowers</span>
+          <h1 className="brand-title">
+            <span className="brand-name">ProFlyer</span><span className="gradient-text">.ai</span>
           </h1>
+          <h2 className="tagline">
+            Design Like a Pro with AI Superpowers
+          </h2>
 
           <p className="subtitle">
             ProFlyer.ai is your AI-powered design assistant that creates stunning 
