@@ -13,7 +13,7 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        access_key: 'YOUR_ACCESS_KEY', // Get from web3forms.com
+        access_key: '11477007-878c-460e-acba-106261803f80', // Get from web3forms.com
         to_email: 'contact@proflyer.ai',
         subject: 'New ProFlyer.ai Signup!',
         from_name: 'ProFlyer.ai',
